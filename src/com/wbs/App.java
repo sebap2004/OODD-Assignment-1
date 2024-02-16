@@ -8,6 +8,9 @@ package com.wbs;
 
 import org.marcprice.jff.simulation.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 /**
  * App is the top-level class for the Aquarium simulation.
@@ -59,13 +62,28 @@ public class App {
      * METHOD: run the real-time loop.
      */
     public void run() throws Exception {
+
+        List<IUpdatable> updates = new ArrayList<>();
+
+
         // ADD some display objects to scene:
-        // (to do)
+        Pet javaFish = new JavaFish(0.5f, 0.5f, 0.05f);
+        _scene.addDisplayObject(javaFish);
+
+        updates.add(javaFish);
+
+        Pet urchin = new Urchin(0.2f, 0.2f, 0.05f);
+        _scene.addDisplayObject(urchin);
+
+        updates.add(urchin);
 
         // RUN the real-time loop until the user has pressed the ESCAPE key...
         while (!_scene.isKeyPressed(ESCAPE_KEY)) {
-            // UPDATE assets:
-            // (to do)
+
+            for(IUpdatable obj : updates)
+            {
+                obj.update();
+            }
 
             // RENDER scene:
             _scene.render();
