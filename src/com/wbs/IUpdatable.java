@@ -1,5 +1,13 @@
 package com.wbs;
 
+
+/**
+ * Interface: Updates object - to be called on each cycle of the simulation.
+ */
 public interface IUpdatable {
-    void update();
+
+    /**
+     * METHOD: updates object - to be called on each cycle of the simulation.
+     */
+    void update() throws Exception;
 }
